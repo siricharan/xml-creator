@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<products>
+  <product>
+    <Name>test1</Name>
+    <Summary>summary1</Summary>
+    <Precondition>condition1</Precondition>
+  </product>
+  <product>
+    <Name>test2</Name>
+    <Summary>summary2</Summary>
+    <Precondition>condition2</Precondition>
+  </product>
+  <product>
+    <Name>test3</Name>
+    <Summary>summary3</Summary>
+    <Precondition>condition3</Precondition>
+  </product>
+  <product>
+    <Name>test4</Name>
+    <Summary>summary4</Summary>
+    <Precondition>condition4</Precondition>
+  </product>
+  <product>
+    <Name>test5</Name>
+    <Summary>summary5</Summary>
+    <Precondition>condition5</Precondition>
+  </product>
+  <product>
+    <Name>test6</Name>
+    <Summary>summary6</Summary>
+    <Precondition>condition6</Precondition>
+  </product>
+  <product>
+    <Name>test7</Name>
+    <Summary>summary7</Summary>
+    <Precondition>condition7</Precondition>
+  </product>
+  <product>
+    <Name>test8</Name>
+    <Summary>summary8</Summary>
+    <Precondition>condition8</Precondition>
+  </product>
+</products>

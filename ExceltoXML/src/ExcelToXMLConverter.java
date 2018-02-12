@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -73,6 +74,10 @@ public class ExcelToXMLConverter {
 				final XSSFRow row = (XSSFRow) rows.next();
 
 				final int rowNumber = row.getRowNum();
+				if(rowNumber==0 || rowNumber==1)
+				{
+					continue;
+				}
 				// display row number
 				System.out.println("Row No.: " + rowNumber);
 
@@ -154,9 +159,50 @@ public class ExcelToXMLConverter {
 		}
 	}
 
+	/**
+	 * @param inputFolder
+	 * @return
+	 */
+	public List<String> getListOfFile(String inputFolder)
+	{
+
+		List<String> results = new ArrayList();
+
+
+		File inputDir = new File(inputFolder);
+		if(inputDir.exists() && inputDir.isDirectory())
+		{
+			File[] files = inputDir.listFiles();
+			//If this pathname does not denote a directory, then listFiles() returns null. 
+
+			for (File file : files) {
+				if (file.isFile()) {
+					results.add(file.getAbsolutePath());
+					System.out.println(file.getAbsolutePath());
+				}
+			}
+
+		}
+		
+		return results;
+	}
+	
+	
 	public static void main(String[] args) {
 		final ExcelToXMLConverter poiExample = new ExcelToXMLConverter();
-		final String xlsPath = args[0];
-		poiExample.displayFromExcel(xlsPath, args[1], "product");
+		List<String> listOfExcels = poiExample.getListOfFile(args[0]);
+		
+		Iterator<String> it = listOfExcels.iterator();
+		while(it.hasNext())
+		{
+			String file = it.next();
+			File f = new File(file);
+			//String fileNameWithOutExt = FilenameUtils.removeExtension(fileNameWithExt);
+			
+		     int pos = f.getName().lastIndexOf(".");
+			poiExample.displayFromExcel(file, args[1] + "/" + f.getName().substring(0, pos) +".xml", "product");
+		}
+		
+		//
 	}
 }
